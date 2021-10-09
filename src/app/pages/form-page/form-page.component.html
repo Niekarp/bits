@@ -1,0 +1,16 @@
+<article class="form-page">
+    <input type="hidden" value="1" #selectedStep>
+
+    <aside class="form-page__menu">
+        <app-menu-button *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+            (click)="selectedStep.value = i.toString()"
+            [selected]="selectedStep.value === i.toString()"
+            [disabled]="i !== 1 && editedFormData.marketingName === ''">
+        </app-menu-button>
+    </aside>
+    <section class="form-page__step" [ngSwitch]="selectedStep.value">
+        <app-definition-step *ngSwitchCase="1"></app-definition-step>
+        <app-summary-step    *ngSwitchCase="9"></app-summary-step>
+        <app-mockup-step     *ngSwitchDefault></app-mockup-step>
+    </section>
+</article>

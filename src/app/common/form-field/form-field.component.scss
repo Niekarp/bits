@@ -1,0 +1,17 @@
+:host {
+    flex: 1 1 auto;
+}
+
+.form-field {
+    position: relative;
+
+    &__required {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &--invalid {
+        border: 1px solid red;
+    }
+}

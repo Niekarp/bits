@@ -1,0 +1,7 @@
+<article class="dashboard-page">
+    <div class="forms-container" *ngFor="let form of formData.forms; let i = index">
+        <div>{{ form.marketingName }}</div>
+        <button type="button" (click)="formData.startFormEditing(i)">Edytuj</button>
+        <button type="button" (click)="formData.deleteForm(i)">Usun</button>
+    </div>
+</article>

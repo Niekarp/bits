@@ -1,0 +1,10 @@
+.dashboard-page {
+    max-width: 50rem;
+    margin: auto;
+    margin-top: 10rem;
+
+    .forms-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

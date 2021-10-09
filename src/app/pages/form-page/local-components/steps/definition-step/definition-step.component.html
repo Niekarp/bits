@@ -1,0 +1,93 @@
+<div class="definition-step">
+    <div>
+        <section>
+            <h1><span>Description</span><span>*is required</span></h1>
+            <form>
+                <app-form-row>
+                    <app-form-field [required]="true" [invalid]="marketingName">
+                        <input type="text" #marketingName="ngModel" name="marketingName" placeholder="Marketing name" [ngModel]="editedFormData.marketingName" (ngModelChange)="updateAndSaveForm($event, 'marketingName')" required>
+                    </app-form-field>
+                </app-form-row>
+
+                <app-form-row>
+                    <app-form-field>
+                        <input type="text" name="technicalName" placeholder="Technical name" [ngModel]="editedFormData.technicalName" (ngModelChange)="updateAndSaveForm($event, 'technicalName')">
+                    </app-form-field>
+                </app-form-row>
+                <app-form-row>
+                    <app-form-field>
+                        <textarea name="description" placeholder="Description" [ngModel]="editedFormData.description" (ngModelChange)="updateAndSaveForm($event, 'description')"></textarea>
+                    </app-form-field>
+                </app-form-row>
+            </form>
+        </section>
+        <section>
+            <h1><span>Catalog promotion tutorial:</span></h1> 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt urna nisl, vitae rhoncus neque sodales vitae. In accumsan dui nec quam blandit porta. Sed commodo porttitor fermentum. Aliquam hendrerit sodales nunc, sit amet ornare arcu laoreet in. Ut luctus velit eget sem facilisis ultricies. Nunc laoreet pharetra tristique. Donec.
+        </section>
+    </div>
+    <div>
+        <section>
+            <h1><span>Conditions</span><span>*is required</span></h1> 
+            <form>
+                <app-form-row>
+                    <app-form-field [required]="true">
+                        <select name="condition" [ngModel]="editedFormData.condition" (ngModelChange)="updateAndSaveForm($event, 'condition')">
+                            <option value="Portal">Portal</option>
+                            <option value="Lorem">Lorem</option>
+                            <option value="Ipsum">Ipsum</option>
+                        </select>
+                    </app-form-field>
+                </app-form-row>
+                
+                <app-form-row>
+                    <app-form-field [required]="true">
+                        <select name="typeField" [ngModel]="editedFormData.type" (ngModelChange)="updateAndSaveForm($event, 'type')">
+                            <option value="Amet">Amet</option>
+                            <option value="Sit">Sit</option>
+                            <option value="Dolor">Dolor</option>
+                        </select>
+                    </app-form-field>
+                </app-form-row>
+                <app-form-row>
+                    <app-form-field>
+                        <input type="number" name="benefitAmount" [ngModel]="editedFormData.benefitAmount" (ngModelChange)="updateAndSaveForm($event, 'benefitAmount')">
+                    </app-form-field>
+                </app-form-row>
+                <app-form-row>
+                    <app-form-field [required]="true">
+                        <input type="date" name="startDate" [ngModel]="editedFormData.startDate" (ngModelChange)="updateAndSaveForm($event, 'startDate')">
+                        <app-tooltip style="position: absolute; right: 0;"></app-tooltip>
+                    </app-form-field>
+                    <app-form-field style="flex: 20%"></app-form-field>
+                    <app-form-field>
+                        <input type="date" name="finishDate" [ngModel]="editedFormData.finishDate" (ngModelChange)="updateAndSaveForm($event, 'finishDate')">
+                    </app-form-field>
+                </app-form-row>
+                <app-form-row>
+                    <app-form-field>
+                        <input type="radio" name="businessConditions" [value]="0" [ngModel]="editedFormData.businessConditions" (ngModelChange)="updateAndSaveForm($event, 'businessConditions')">
+                        <label>Business conditions</label>
+                    </app-form-field>
+                    <app-form-field>
+                        <input type="radio" name="businessConditions" [value]="1" [ngModel]="editedFormData.businessConditions" (ngModelChange)="updateAndSaveForm($event, 'businessConditions')">
+                        <label>Best price 100%</label>
+                    </app-form-field>
+                    <app-form-field style="width: 4.5rem;"></app-form-field>
+                </app-form-row>
+                <app-form-row>
+                    <app-form-field>
+                        <input type="checkbox" name="promotionConnection" [ngModel]="editedFormData.promotionConnection" (ngModelChange)="updateAndSaveForm($event, 'promotionConnection')">
+                        <label>Connect with other promotions</label>
+                    </app-form-field>
+                </app-form-row>
+                <app-form-row>
+                    <app-form-field>
+                        <input type="checkbox" name="backPromotion" [ngModel]="editedFormData.backPromotion" (ngModelChange)="updateAndSaveForm($event, 'backPromotion')">
+                        <label>Back promotions</label>
+                    </app-form-field>
+                </app-form-row>
+            </form>
+        </section>
+    </div>
+</div>

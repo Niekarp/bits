@@ -1,0 +1,8 @@
+<div class="menu-button" 
+    [ngClass]="{'menu-button--disabled': disabled, 'menu-button--selected': selected}" 
+    (click)="stopClickPropagationIfDisabled($event)">
+
+    <div class="menu-button__number">1</div>
+    <span>Button</span>
+    <app-tooltip *ngIf="disabled"></app-tooltip>
+</div>

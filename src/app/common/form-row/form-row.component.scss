@@ -1,0 +1,10 @@
+.form-row {
+    display: flex;
+    position: relative;
+
+    &__tooltip {
+        position: absolute;
+        top: 0;
+        right: -2rem;
+    }
+}

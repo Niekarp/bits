@@ -1,0 +1,22 @@
+.definition-step {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: lightgray;
+    padding: 2rem 1rem 0rem 0;
+
+    & > div {
+        padding: 0 2rem;
+        border-right: 1rem;
+        border-color: white;
+        box-sizing: border-box;
+        border-right-style: solid;
+    }
+    & > div > section > form {
+        display: flex;
+        flex-direction: column;
+
+        textarea {
+            resize: vertical;
+        }
+    }
+}

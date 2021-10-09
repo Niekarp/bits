@@ -1,0 +1,4 @@
+<div class="form-row" (mouseenter)="isHovered = true" (mouseleave)="isHovered = false" [ngStyle]="{'z-index': isHovered ? '999' : 'unset'}">
+    <ng-content></ng-content>
+    <app-tooltip class="form-row__tooltip"></app-tooltip>
+</div>

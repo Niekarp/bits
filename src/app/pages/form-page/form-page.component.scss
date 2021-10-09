@@ -1,0 +1,17 @@
+.form-page {
+    display: flex;
+    
+    padding-top: 2.8rem;
+    margin-top: 0.2rem;
+    background-image: linear-gradient(to right, black 40%, rgba(255,255,255,0) 0%);
+    background-position: top;
+    background-size: 2.5rem 0.1rem;
+    background-repeat: repeat-x;
+
+    &__menu {
+        flex: 0 0 15rem;
+    }
+    &__step {
+        flex: 1 1 auto;
+    }
+}

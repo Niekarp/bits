@@ -1,0 +1,37 @@
+@import "colors.scss";
+
+.menu-button {
+    $button-height: 4.5rem;
+    $button-border-width: 0.1rem;
+    $button-content-height: $button-height - (2 * $button-border-width);
+
+    display: flex;
+    height: $button-height;
+    width: 28rem;
+    background-color: #EFF0F3;
+    border: $button-border-width solid white;
+    margin-left: 3rem;
+
+    &--disabled {
+        background-color: gray;
+    }
+
+    &--selected {
+        background-color: $primary-background-color;
+    }
+
+    &__number {
+        $number-font-size: 2rem;
+
+        width:  $button-content-height;
+        height: $button-content-height;
+        border-radius: 100%;
+        position: relative;
+        right: 2.25rem;
+        background-color: #666;
+        text-align: center;
+        font-size: $number-font-size;
+        line-height: $number-font-size - ($button-content-height / 2);
+        color: white;
+    }
+}
