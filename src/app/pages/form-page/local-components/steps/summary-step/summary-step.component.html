@@ -1,3 +1,8 @@
-<div>
-    <button type="submit" (click)="onSaveButtonClick()">Zapisz</button>
+<div class="summary">
+    <div *ngFor="let field of editedFormData | keyvalue" class="summary__row">
+        <div>{{ field.key }}</div>
+        <div>{{ field.value }}</div>
+    </div>
+
+    <button type="submit" class="summary__button" (click)="onSaveButtonClick()">Zapisz</button>
 </div>

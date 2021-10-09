@@ -12,6 +12,12 @@ export class MenuButtonComponent implements OnInit {
     @Input()
     public selected: boolean = false;
 
+    @Input()
+    public number: number = 0;
+
+    @Input()
+    public text: string = "";
+
     stopClickPropagationIfDisabled($event: Event): void {
         if (this.disabled) {
             $event.stopPropagation();

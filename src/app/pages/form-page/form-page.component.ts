@@ -9,6 +9,17 @@ import { FormDataService } from 'src/app/services/form-data/form-data.service';
 })
 export class FormPageComponent { 
     public editedFormData: AppFormData;
+    public buttonNames: Array<string> = [
+        "definition",
+        "choose products",
+        "exclude products",
+        "bonus products",
+        "products limits",
+        "choose clients",
+        "exclude clients",
+        "clients limits",
+        "summary"
+    ];
 
     constructor(public formData: FormDataService) {
         this.editedFormData = formData.forms[formData.editedFormIdx];

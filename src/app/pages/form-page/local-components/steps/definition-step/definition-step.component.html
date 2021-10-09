@@ -1,7 +1,7 @@
 <div class="definition-step">
     <div>
-        <section>
-            <h1><span>Description</span><span>*is required</span></h1>
+        <section class="description-form">
+            <h2><span>Description</span><span class="description-form__required-info"><span class="description-form__asterisk"> * </span> is required</span></h2>
             <form>
                 <app-form-row>
                     <app-form-field [required]="true" [invalid]="marketingName">
@@ -22,13 +22,15 @@
             </form>
         </section>
         <section>
-            <h1><span>Catalog promotion tutorial:</span></h1> 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt urna nisl, vitae rhoncus neque sodales vitae. In accumsan dui nec quam blandit porta. Sed commodo porttitor fermentum. Aliquam hendrerit sodales nunc, sit amet ornare arcu laoreet in. Ut luctus velit eget sem facilisis ultricies. Nunc laoreet pharetra tristique. Donec.
+            <h2><span>Catalog promotion tutorial:</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</p>
         </section>
     </div>
     <div>
-        <section>
-            <h1><span>Conditions</span><span>*is required</span></h1> 
+        <section class="conditions-form">
+            <h2><span>Conditions</span><span class="description-form__required-info"><span class="description-form__asterisk"> * </span> is required</span></h2>
             <form>
                 <app-form-row>
                     <app-form-field [required]="true">
@@ -54,12 +56,12 @@
                         <input type="number" name="benefitAmount" [ngModel]="editedFormData.benefitAmount" (ngModelChange)="updateAndSaveForm($event, 'benefitAmount')">
                     </app-form-field>
                 </app-form-row>
-                <app-form-row>
+                <app-form-row class="shorter-margins">
                     <app-form-field [required]="true">
                         <input type="date" name="startDate" [ngModel]="editedFormData.startDate" (ngModelChange)="updateAndSaveForm($event, 'startDate')">
                         <app-tooltip style="position: absolute; right: 0;"></app-tooltip>
                     </app-form-field>
-                    <app-form-field style="flex: 20%"></app-form-field>
+                    <app-form-field style="flex: 0 0 15%;"></app-form-field>
                     <app-form-field>
                         <input type="date" name="finishDate" [ngModel]="editedFormData.finishDate" (ngModelChange)="updateAndSaveForm($event, 'finishDate')">
                     </app-form-field>

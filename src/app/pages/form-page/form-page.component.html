@@ -2,10 +2,12 @@
     <input type="hidden" value="1" #selectedStep>
 
     <aside class="form-page__menu">
-        <app-menu-button *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9]"
-            (click)="selectedStep.value = i.toString()"
-            [selected]="selectedStep.value === i.toString()"
-            [disabled]="i !== 1 && editedFormData.marketingName === ''">
+        <app-menu-button *ngFor="let n of [1, 2, 3, 4, 5, 6, 7, 8, 9]; let i = index"
+            (click)="selectedStep.value = n.toString()"
+            [number]="n"
+            [text]="buttonNames[i]"
+            [selected]="selectedStep.value === n.toString()"
+            [disabled]="n !== 1 && editedFormData.marketingName === ''">
         </app-menu-button>
     </aside>
     <section class="form-page__step" [ngSwitch]="selectedStep.value">

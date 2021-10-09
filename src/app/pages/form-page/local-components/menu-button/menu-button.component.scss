@@ -1,37 +1,88 @@
 @import "colors.scss";
 
+:host:first-of-type > .menu-button {
+    // margin-top: 0;
+    // margin-right: 0;
+    // border-right: 0;
+    border-top: 0;
+}
+
+:host:last-of-type > .menu-button {
+    // margin-top: 0;
+    // margin-right: 0;
+    // border-right: 0;
+    border-bottom: 0;
+}
+
 .menu-button {
     $button-height: 4.5rem;
     $button-border-width: 0.1rem;
     $button-content-height: $button-height - (2 * $button-border-width);
+    $button-margin-size: 0.3rem;
 
     display: flex;
     height: $button-height;
     width: 28rem;
     background-color: #EFF0F3;
     border: $button-border-width solid white;
+    border-right: $button-border-width * 2 solid white;
+    border-left: 0;
+    // margin-top: $button-margin-size;
+    // margin-right: $button-margin-size;
+    // margin-bottom: $button-margin-size;
     margin-left: 3rem;
 
     &--disabled {
-        background-color: gray;
+        // opacity: 0.8;
+
+        .menu-button__text {
+            opacity: 0.6;
+        }
+
+        .menu-button__number {
+            background-color: #DDE1E6;
+            color: #A6A9AD;
+        }
     }
 
     &--selected {
-        background-color: $primary-background-color;
+        border-right: 0;
+        
+        .menu-button__number {
+            background-color: #99211D;
+        }
+        color: black;
+    }
+
+    &__text {
+        font-size: 1.5rem;
+        margin: auto 0;
+        text-transform: uppercase;
     }
 
     &__number {
         $number-font-size: 2rem;
 
+        display: flex;
         width:  $button-content-height;
         height: $button-content-height;
         border-radius: 100%;
         position: relative;
         right: 2.25rem;
         background-color: #666;
-        text-align: center;
         font-size: $number-font-size;
-        line-height: $number-font-size - ($button-content-height / 2);
         color: white;
+
+        span {
+            margin: auto;
+        }
+    }
+
+    &__tooltip-wrapper {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 1rem;
     }
 }

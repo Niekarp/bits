@@ -1,22 +1,75 @@
+@import "colors.scss";
+
 .definition-step {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: lightgray;
-    padding: 2rem 1rem 0rem 0;
+    background-color: $primary-background-color;
+    padding: 2.2rem 1rem 0rem 0;
+
+    p {
+        margin: 25px 0;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: space-between;
+        height: 2.4rem;
+        border-bottom: 2px solid white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-weight: lighter;
+        line-height: 0.1;
+    }
 
     & > div {
-        padding: 0 2rem;
-        border-right: 1rem;
+        padding: 0 4rem;
+        border-right: 2px;
         border-color: white;
         box-sizing: border-box;
         border-right-style: solid;
     }
     & > div > section > form {
-        display: flex;
-        flex-direction: column;
-
         textarea {
             resize: vertical;
+            height: 140px;
+        }
+    }
+
+    app-form-row:first-of-type {
+        margin: 0;
+    }
+
+    app-form-row {
+        display: block;
+        margin: 30px 0;
+    }
+
+    .description-form {
+        min-height: 380px;
+
+        &__required-info {
+            color: #96201C;
+            font-size: 14px;
+        }
+
+        &__asterisk {
+            vertical-align: sub;
+            font-weight: bold;
+        }
+
+        form {
+            // display: block;
+        }
+
+    }
+
+    .conditions-form {
+        .shorter-margins, .shorter-margins ~ app-form-row {
+            margin: 20px 0;
+        }
+
+        input ~ label {
+            padding-left: 0.3rem;
         }
     }
 }

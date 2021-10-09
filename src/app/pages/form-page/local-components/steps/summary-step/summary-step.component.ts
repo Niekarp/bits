@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppFormData } from 'src/app/models/app-form-data.model';
 import { FormDataService } from 'src/app/services/form-data/form-data.service';
 
 @Component({
@@ -6,8 +7,12 @@ import { FormDataService } from 'src/app/services/form-data/form-data.service';
     templateUrl: './summary-step.component.html',
     styleUrls: ['./summary-step.component.scss']
 })
-export class SummaryStepComponent {    
-    constructor(private formData: FormDataService) { }
+export class SummaryStepComponent {
+    public editedFormData: AppFormData; 
+
+    constructor(private formData: FormDataService) {
+        this.editedFormData = formData.forms[formData.editedFormIdx];
+    }
     
     public onSaveButtonClick() {
         this.formData.stopFormEditing();

@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~normalize.css';
+@import "fonts.scss";
+@import "colors.scss";
 
 * {
     box-sizing: border-box;
@@ -7,10 +9,23 @@
 
 html, body {
     font-size: 10px;
+    font-family: latoregular;
+    color: $primary-text-color;
+}
+
+h2 {
+    font-size: 1.5rem;
 }
 
 .form-page {
     input[type="text"], input[type="number"], input[type="date"], textarea, select {
         width: 100%;
+    }
+
+    input:not(input[type="checkbox"], input[type="radio"]), textarea, select {
+        height: 4rem;
+        height: 4rem;
+        appearance: none;
+        border: none;
     }
 }
