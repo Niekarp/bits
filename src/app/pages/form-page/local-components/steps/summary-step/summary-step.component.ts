@@ -15,7 +15,11 @@ export class SummaryStepComponent {
     }
     
     public onSaveButtonClick() {
-        this.formData.stopFormEditing();
+        if (this.formData.isRequiredDataEntered()) {
+            this.formData.stopFormEditing();
+        } else {
+            
+        }
     }
     
 }

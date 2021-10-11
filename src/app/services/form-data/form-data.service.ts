@@ -30,6 +30,14 @@ export class FormDataService {
         this.editedFormIdx = Number(localStorage.getItem(this.LOCAL_STORAGE_EDITED_FORM_KEY));
     }
 
+    public addForm() {
+        this.forms.push(new AppFormData());
+        this.editedFormIdx = this.forms.length - 1;
+
+        this.saveDraft();
+        this.saveEditingStatus();
+    }
+
     public startFormEditing(formIdx: number) {
         if (formIdx >= this.forms.length) return;
 
@@ -61,5 +69,16 @@ export class FormDataService {
         }
 
         this.saveDraft();
+    }
+
+    public isRequiredDataEntered(): boolean {
+        const formData = this.forms[this.editedFormIdx];
+        
+        if (!formData) return true;
+
+        return !!formData.marketingName 
+            && !!formData.condition
+            && !!formData.type
+            && !!formData.startDate;
     }
 }
