@@ -4,7 +4,11 @@
 
     &__tooltip {
         position: absolute;
-        top: 12px;
+        top: calc(50% - 8px);
         right: -2rem;
+
+        &--up {
+            top: 12px;
+        }
     }
 }

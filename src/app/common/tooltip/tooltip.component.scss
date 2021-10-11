@@ -1,6 +1,15 @@
+@use 'sass:math';
+@import "colors.scss";
+
 .tooltip {
     position: relative;
     display: flex;
+
+    &__icon {
+        path {
+            fill: #B22935;
+        }
+    }
 
     .popup {
         $popup-width: 150px;
@@ -17,7 +26,7 @@
         
         position: absolute;
         top: 2rem;
-        left: -(($popup-width / 2) - ($icon-width / 2) );
+        left: -(math.div($popup-width, 2) - math.div($icon-width, 2) );
 
         text-align: center;
         font-size: 1.2rem;

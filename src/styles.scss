@@ -2,6 +2,9 @@
 @import '~normalize.css';
 @import "fonts.scss";
 @import "colors.scss";
+@import "breakpoints.scss";
+
+@import 'flatpickr/dist/flatpickr.css';
 
 * {
     box-sizing: border-box;
@@ -17,7 +20,23 @@ h2 {
     font-size: 1.5rem;
 }
 
+.primary-background-hover:hover {
+    background-color: $primary-background-color--darker !important;
+}
+
 .form-page {
+    // Remove input[type"number"] arrows
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+        margin: 0;
+    }
+    /* Firefox */
+    input[type="number"] {
+        -moz-appearance: textfield !important;
+    }
+
     input[type="text"], input[type="number"], input[type="date"], textarea, select {
         width: 100%;
     }
@@ -25,7 +44,72 @@ h2 {
     input:not(input[type="checkbox"], input[type="radio"]), textarea, select {
         height: 4rem;
         height: 4rem;
+        padding-top:  10px;
+        padding-left: 20px;
         appearance: none;
         border: none;
     }
+
+    textarea {
+        padding-top:  20px;
+        padding-left: 20px;
+    }
+
+    input[type="number"] {
+        height: 6rem !important;
+        border-bottom: 1px solid white !important;
+        background-color: #EFF0F3;
+    }
+}
+
+// Snackbar
+
+.my-snackbar {
+    display: flex !important;
+    justify-content: center;
+    border: 2px solid white;
+	min-width: 250px !important;
+    font-size: 1.5rem;
+	height: 50px;
+	display: block;
+	text-align: center;
+    color: white;
+}
+
+.my-snackbar--problem {
+    @extend .my-snackbar;
+    background: tomato;
+}
+
+.cdk-overlay-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+
+    z-index: 99999999;
+}
+
+@media screen and (max-width: $form-one-column-breakpoint) {
+    html, body {
+        font-size: 9px;
+    }   
+}
+
+@media screen and (max-width: 700px) {
+    html, body {
+        font-size: 7px;
+    }   
+}
+
+@media screen and (max-width: 600px) {
+    html, body {
+        font-size: 6px;
+    }   
 }

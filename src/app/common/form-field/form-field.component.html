@@ -1,4 +1,4 @@
-<div class="form-field" [ngClass]="{ 'form-field--invalid': invalid.touched && invalid.invalid }">
+<div class="form-field" [ngClass]="{ 'form-field--invalid': invalid }">
     <ng-content></ng-content>
     <span *ngIf="required" class="form-field__required">*</span>
 </div>

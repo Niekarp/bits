@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppFormData } from 'src/app/models/app-form-data.model';
 import { FormDataService } from 'src/app/services/form-data/form-data.service';
+import { DefinitionStepComponent } from './local-components/steps/definition-step/definition-step.component';
 
 @Component({
     selector: 'app-form-page',
@@ -8,6 +9,14 @@ import { FormDataService } from 'src/app/services/form-data/form-data.service';
     styleUrls: ['./form-page.component.scss']
 })
 export class FormPageComponent { 
+    @ViewChild("selectedStep")
+    public $selectedStep!: ElementRef;
+
+    @ViewChild(DefinitionStepComponent)
+    public difinitionStepCmp!: DefinitionStepComponent;
+
+    public saveFailed: boolean = false;
+
     public editedFormData: AppFormData;
     public buttonNames: Array<string> = [
         "definition",
@@ -23,5 +32,16 @@ export class FormPageComponent {
 
     constructor(public formData: FormDataService) {
         this.editedFormData = formData.forms[formData.editedFormIdx];
+    }
+
+    public onClickAndNotFilled(): void {
+        if (this.difinitionStepCmp) {
+            this.difinitionStepCmp.touchRequiredSteps();
+        }
+    }
+
+    public onSaveFail() {
+        (this.$selectedStep.nativeElement as HTMLInputElement).value = "1";
+        this.saveFailed = true;
     }
 }

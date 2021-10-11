@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { AppFormData } from 'src/app/models/app-form-data.model';
 import { FormDataService } from 'src/app/services/form-data/form-data.service';
+
 
 @Component({
     selector: 'app-definition-step',
@@ -8,6 +9,12 @@ import { FormDataService } from 'src/app/services/form-data/form-data.service';
     styleUrls: ['./definition-step.component.scss']
 })
 export class DefinitionStepComponent {
+    @Input()
+    public saveFailed: boolean = false;
+
+    @ViewChild("marketingName")
+    public $marketingName!: any;
+
     public editedFormData: AppFormData;
     
     constructor(public formData: FormDataService) {
@@ -16,7 +23,18 @@ export class DefinitionStepComponent {
 
     public updateAndSaveForm(newValue: string, fieldName: string) {
         (this.editedFormData as any)[fieldName] = newValue;
-        
+
         this.formData.saveDraft();
+    }
+
+    public touchRequiredSteps(): void {
+        this.$marketingName.control.markAsTouched();
+        // this.$technicalName.control.markAsTouched();
+    }
+
+    public showCalendar(calendarElm: any) {
+        // calendarElm._flatpickr.open();
+        // console.log(this.$condition);
+        
     }
 }

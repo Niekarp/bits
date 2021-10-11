@@ -1,6 +1,6 @@
 <div class="summary">
-    <div *ngFor="let field of editedFormData | keyvalue" class="summary__row">
-        <div>{{ field.key }}</div>
+    <div *ngFor="let field of editedFormData | formDisplay | keyvalue" class="summary__row">
+        <div>{{ field.key + (formData.isFieldRequired(field.key) ? '*' : '') }}</div>
         <div>{{ field.value }}</div>
     </div>
 

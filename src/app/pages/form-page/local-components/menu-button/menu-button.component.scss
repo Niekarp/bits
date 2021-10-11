@@ -1,4 +1,5 @@
 @import "colors.scss";
+@import "breakpoints.scss";
 
 :host:first-of-type > .menu-button {
     // margin-top: 0;
@@ -31,6 +32,7 @@
     // margin-right: $button-margin-size;
     // margin-bottom: $button-margin-size;
     margin-left: 3rem;
+    transition: background-color 0.2s ease-in-out;
 
     &--disabled {
         // opacity: 0.8;
@@ -84,5 +86,11 @@
         justify-content: flex-end;
         align-items: center;
         padding-right: 1rem;
+    }
+}
+
+@media screen and (max-width: $form-one-column-breakpoint) {
+    .menu-button { 
+        width: 24rem;
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-form-row',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./form-row.component.scss']
 })
 export class FormRowComponent implements OnInit {
+    @Input()
+    public tooltipUp: boolean | undefined = true;
+
     public isHovered: boolean = false;
     
     constructor() { }

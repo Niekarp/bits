@@ -1,6 +1,9 @@
+import { FlatpickrModule } from 'angularx-flatpickr';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +17,8 @@ import { TooltipComponent } from './common/tooltip/tooltip.component';
 import { FormRowComponent } from './common/form-row/form-row.component';
 import { FormFieldComponent } from './common/form-field/form-field.component';
 import { SaveDraftOnChangeDirective } from './directives/save-draft-on-change/save-draft-on-change.directive';
+import { FormDisplayPipe } from './pipes/form-display.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,12 +32,16 @@ import { SaveDraftOnChangeDirective } from './directives/save-draft-on-change/sa
     TooltipComponent,
     FormRowComponent,
     FormFieldComponent,
-    SaveDraftOnChangeDirective
+    SaveDraftOnChangeDirective,
+    FormDisplayPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    FlatpickrModule.forRoot(),
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

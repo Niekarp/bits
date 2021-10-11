@@ -1,4 +1,5 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-menu-button',
@@ -18,15 +19,30 @@ export class MenuButtonComponent implements OnInit {
     @Input()
     public text: string = "";
 
+    @Output()
+    public notFilled = new EventEmitter();
+
     stopClickPropagationIfDisabled($event: Event): void {
         if (this.disabled) {
             $event.stopPropagation();
+            this.notFilled.emit('');
         }
     }
 
-    constructor() { }
+    constructor(private snackbar: MatSnackBar) { }
     
     ngOnInit(): void {
+    }
+
+    public displayToastIfDisabled(): void {
+        if (this.disabled) {
+            this.snackbar.open("fill marketing or technical name", undefined, {
+                duration: 2000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+                panelClass: ['my-snackbar--problem']
+            });
+        }
     }
     
 }

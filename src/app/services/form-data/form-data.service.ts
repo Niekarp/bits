@@ -10,6 +10,8 @@ export class FormDataService {
 
     public forms!: Array<AppFormData>; // initialized with initDataFromLocalStorage
     public editedFormIdx!: number;     // initialized with initDataFromLocalStorage
+
+    private requiredFieldNames = [ "marketingName", "condition", "type", "startDate" ];
     
     constructor() {
         if (localStorage.getItem(this.LOCAL_STORAGE_FORMS_KEY) === null ||
@@ -69,6 +71,10 @@ export class FormDataService {
         }
 
         this.saveDraft();
+    }
+
+    public isFieldRequired(fieldName: string): boolean {
+        return this.requiredFieldNames.includes(fieldName);
     }
 
     public isRequiredDataEntered(): boolean {

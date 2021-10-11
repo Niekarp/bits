@@ -10,7 +10,7 @@ export class FormFieldComponent implements OnInit {
     public required: boolean = false;
 
     @Input()
-    public invalid: any = {};
+    public invalid: boolean = false;
     
     constructor() { }
     

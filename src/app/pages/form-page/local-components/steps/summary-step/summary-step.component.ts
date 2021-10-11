@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppFormData } from 'src/app/models/app-form-data.model';
 import { FormDataService } from 'src/app/services/form-data/form-data.service';
 
@@ -8,9 +9,12 @@ import { FormDataService } from 'src/app/services/form-data/form-data.service';
     styleUrls: ['./summary-step.component.scss']
 })
 export class SummaryStepComponent {
-    public editedFormData: AppFormData; 
+    @Output()
+    public saveFail = new EventEmitter();
 
-    constructor(private formData: FormDataService) {
+    public editedFormData: AppFormData;
+
+    constructor(public formData: FormDataService, private snackbar: MatSnackBar) {
         this.editedFormData = formData.forms[formData.editedFormIdx];
     }
     
@@ -18,7 +22,13 @@ export class SummaryStepComponent {
         if (this.formData.isRequiredDataEntered()) {
             this.formData.stopFormEditing();
         } else {
-            
+            this.snackbar.open("required fields not filled", undefined, {
+                duration: 2000,
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+                panelClass: ['my-snackbar--problem']
+            });
+            this.saveFail.emit();
         }
     }
     

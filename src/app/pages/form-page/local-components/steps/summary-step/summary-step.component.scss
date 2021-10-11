@@ -7,14 +7,15 @@
 
     &__row {
         display: flex;
-        min-width: 300px;
+        width: 300px;
         justify-content: space-between;
         text-align: center;
         margin: 5px;
         border-bottom: 3px solid white;
+        overflow: hidden;
 
         div {
-            flex: 1;
+            flex: 0 0 50%;
         }
     }
 

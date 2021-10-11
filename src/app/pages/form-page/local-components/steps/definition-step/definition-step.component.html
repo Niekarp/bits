@@ -4,7 +4,7 @@
             <h2><span>Description</span><span class="description-form__required-info"><span class="description-form__asterisk"> * </span> is required</span></h2>
             <form>
                 <app-form-row>
-                    <app-form-field [required]="true" [invalid]="marketingName">
+                    <app-form-field [required]="true" [invalid]="!!(marketingName.touched && marketingName.invalid)">
                         <input type="text" #marketingName="ngModel" name="marketingName" placeholder="Marketing name" [ngModel]="editedFormData.marketingName" (ngModelChange)="updateAndSaveForm($event, 'marketingName')" required>
                     </app-form-field>
                 </app-form-row>
@@ -14,7 +14,7 @@
                         <input type="text" name="technicalName" placeholder="Technical name" [ngModel]="editedFormData.technicalName" (ngModelChange)="updateAndSaveForm($event, 'technicalName')">
                     </app-form-field>
                 </app-form-row>
-                <app-form-row>
+                <app-form-row [tooltipUp]>
                     <app-form-field>
                         <textarea name="description" placeholder="Description" [ngModel]="editedFormData.description" (ngModelChange)="updateAndSaveForm($event, 'description')"></textarea>
                     </app-form-field>
@@ -33,37 +33,44 @@
             <h2><span>Conditions</span><span class="description-form__required-info"><span class="description-form__asterisk"> * </span> is required</span></h2>
             <form>
                 <app-form-row>
-                    <app-form-field [required]="true">
-                        <select name="condition" [ngModel]="editedFormData.condition" (ngModelChange)="updateAndSaveForm($event, 'condition')">
+                    <app-form-field [required]="true" [invalid]="!!((condition.touched && !condition.value) || (!condition.value && !condition.touched && saveFailed))" (click)="condition.control.markAsTouched()">
+                        <select name="condition" #condition="ngModel" [ngModel]="editedFormData.condition" (ngModelChange)="updateAndSaveForm($event, 'condition')" required>
+                            <option value="" disabled selected hidden>Condition</option>
                             <option value="Portal">Portal</option>
                             <option value="Lorem">Lorem</option>
                             <option value="Ipsum">Ipsum</option>
                         </select>
+                        <img class="select-arrow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAAA9ElEQVRIie3T20rDQBSF4e8JKkhpa7WeUBTFB/Mt9U4Qb7TaekJFxcNLxJuJDmHSkw2CZMG+yV5r/ROSoVatv1QDh2jOoasZuhrFxQJOkGGA7i8gbVyErjMsxsvjsMhnOCOsG7Jx11FsuCwsM9yiNwWkFzLFnv4kpkdsTgBZxV1JfqNoXimBPWFrBGQN94ncA9bLQh1cJUJv2Ev4t/Gc8N+Eg49UR/qbvWM/8u3gpQSyPA6Sq10C+8ABdvGa2F9PA8mV+lUzfIYpPp/1Sny/WT9ROldIrpafm14ZZBxsiKV5QWLYeQQZVAGJYadhWlVBav1zfQHKJIAi7N8iJQAAAABJRU5ErkJggg=="/>
                     </app-form-field>
                 </app-form-row>
                 
                 <app-form-row>
-                    <app-form-field [required]="true">
-                        <select name="typeField" [ngModel]="editedFormData.type" (ngModelChange)="updateAndSaveForm($event, 'type')">
+                    <app-form-field [required]="true" [invalid]="!!((typeField.touched && !typeField.value) || (!typeField.value && !typeField.touched && saveFailed))"  (click)="typeField.control.markAsTouched()">
+                        <select name="typeField" #typeField="ngModel" [ngModel]="editedFormData.type" (ngModelChange)="updateAndSaveForm($event, 'type')" required>
+                            <option value="" disabled selected hidden>Type</option>
                             <option value="Amet">Amet</option>
                             <option value="Sit">Sit</option>
                             <option value="Dolor">Dolor</option>
                         </select>
+                        <img class="select-arrow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAAA9ElEQVRIie3T20rDQBSF4e8JKkhpa7WeUBTFB/Mt9U4Qb7TaekJFxcNLxJuJDmHSkw2CZMG+yV5r/ROSoVatv1QDh2jOoasZuhrFxQJOkGGA7i8gbVyErjMsxsvjsMhnOCOsG7Jx11FsuCwsM9yiNwWkFzLFnv4kpkdsTgBZxV1JfqNoXimBPWFrBGQN94ncA9bLQh1cJUJv2Ev4t/Gc8N+Eg49UR/qbvWM/8u3gpQSyPA6Sq10C+8ABdvGa2F9PA8mV+lUzfIYpPp/1Sny/WT9ROldIrpafm14ZZBxsiKV5QWLYeQQZVAGJYadhWlVBav1zfQHKJIAi7N8iJQAAAABJRU5ErkJggg=="/>
                     </app-form-field>
                 </app-form-row>
-                <app-form-row>
-                    <app-form-field>
-                        <input type="number" name="benefitAmount" [ngModel]="editedFormData.benefitAmount" (ngModelChange)="updateAndSaveForm($event, 'benefitAmount')">
+                <app-form-row class="number-margins">
+                    <app-form-field [invalid]="!!(!benefitAmount.validity.valueMissing && !benefitAmount.validity.valid)">
+                        <input type="number" name="benefitAmount" #benefitAmount placeholder="Benefit amount" [ngModel]="editedFormData.benefitAmount" (ngModelChange)="updateAndSaveForm($event, 'benefitAmount')" required>
                     </app-form-field>
+                    <!-- {{logStuff(benefit) }} -->
                 </app-form-row>
                 <app-form-row class="shorter-margins">
-                    <app-form-field [required]="true">
-                        <input type="date" name="startDate" [ngModel]="editedFormData.startDate" (ngModelChange)="updateAndSaveForm($event, 'startDate')">
-                        <app-tooltip style="position: absolute; right: 0;"></app-tooltip>
+                    <app-form-field [required]="true" [invalid]="!!((calendarInput1.touched && !calendarInput1.value) || (!calendarInput1.value && !calendarInput1.touched && saveFailed))" (click)="calendarInput1.control.markAsTouched()">
+                        <input #calendarInput1="ngModel" type="text" name="startDate" placeholder="Start date" mwlFlatpickr [ngModel]="editedFormData.startDate" (ngModelChange)="updateAndSaveForm($event, 'startDate')" [altInput]="true" [convertModelValue]="true">
+                        <a class="calendar-img" (click)="showCalendar(calendarInput1)"><img src="./assets/calendar.png"></a>
+                        <!-- {{ logStuff(calendarInput1) }} -->
                     </app-form-field>
                     <app-form-field style="flex: 0 0 15%;"></app-form-field>
                     <app-form-field>
-                        <input type="date" name="finishDate" [ngModel]="editedFormData.finishDate" (ngModelChange)="updateAndSaveForm($event, 'finishDate')">
+                        <input #calendarInput2 type="text" name="finishDate" placeholder="Finish date" mwlFlatpickr [(ngModel)]="editedFormData.finishDate" [altInput]="true" [convertModelValue]="true" [ngModel]="editedFormData.finishDate" (ngModelChange)="updateAndSaveForm($event, 'finishDate')">
+                        <a class="calendar-img" (click)="showCalendar(calendarInput2)"><img src="./assets/calendar.png"></a>
                     </app-form-field>
                 </app-form-row>
                 <app-form-row>
