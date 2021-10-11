@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AppFormData } from 'src/app/models/app-form-data.model';
-import { FormDataService } from 'src/app/services/form-data/form-data.service';
+import { AppFormData } from '../../models/app-form-data.model';
+import { FormDataService } from '../../services/form-data/form-data.service';
 import { DefinitionStepComponent } from './local-components/steps/definition-step/definition-step.component';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppFormData } from 'src/app/models/app-form-data.model';
-import { FormDataService } from 'src/app/services/form-data/form-data.service';
+import { AppFormData } from '../../../../../models/app-form-data.model';
+import { FormDataService } from '../../../../../services/form-data/form-data.service';
 
 @Component({
     selector: 'app-summary-step',

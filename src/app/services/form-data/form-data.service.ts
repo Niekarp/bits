@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppFormData } from 'src/app/models/app-form-data.model';
+import { AppFormData } from '../../models/app-form-data.model';
 
 @Injectable({
     providedIn: 'root'
@@ -11,15 +11,15 @@ export class FormDataService {
     public forms!: Array<AppFormData>; // initialized with initDataFromLocalStorage
     public editedFormIdx!: number;     // initialized with initDataFromLocalStorage
 
-    private requiredFieldNames = [ "marketingName", "condition", "type", "startDate" ];
-    
+    private requiredFieldNames = ["marketingName", "condition", "type", "startDate"];
+
     constructor() {
         if (localStorage.getItem(this.LOCAL_STORAGE_FORMS_KEY) === null ||
             localStorage.getItem(this.LOCAL_STORAGE_EDITED_FORM_KEY) === null) {
             this.initLocalStorage();
         }
 
-        this.initDataFromLocalStorage();        
+        this.initDataFromLocalStorage();
     }
 
     private initLocalStorage(): void {
@@ -55,7 +55,7 @@ export class FormDataService {
     public saveDraft(): void {
         localStorage.setItem(this.LOCAL_STORAGE_FORMS_KEY, JSON.stringify(this.forms));
     }
-    
+
     public saveEditingStatus(): void {
         localStorage.setItem(this.LOCAL_STORAGE_EDITED_FORM_KEY, JSON.stringify(this.editedFormIdx));
     }
@@ -79,10 +79,10 @@ export class FormDataService {
 
     public isRequiredDataEntered(): boolean {
         const formData = this.forms[this.editedFormIdx];
-        
+
         if (!formData) return true;
 
-        return !!formData.marketingName 
+        return !!formData.marketingName
             && !!formData.condition
             && !!formData.type
             && !!formData.startDate;

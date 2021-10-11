@@ -1,6 +1,6 @@
 import { AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { AppFormData } from 'src/app/models/app-form-data.model';
-import { FormDataService } from 'src/app/services/form-data/form-data.service';
+import { AppFormData } from '../../../../../models/app-form-data.model';
+import { FormDataService } from '../../../../../services/form-data/form-data.service';
 
 
 @Component({

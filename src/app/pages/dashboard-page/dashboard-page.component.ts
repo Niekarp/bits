@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormDataService } from 'src/app/services/form-data/form-data.service';
+import { FormDataService } from '../../services/form-data/form-data.service';
 
 @Component({
   selector: 'app-dashboard-page',

@@ -1,5 +1,5 @@
-@use 'sass:math';
-@import "colors.scss";
+// @use 'sass:math';
+@import "../../../scss/colors.scss";
 
 .tooltip {
     position: relative;
@@ -26,7 +26,8 @@
         
         position: absolute;
         top: 2rem;
-        left: -(math.div($popup-width, 2) - math.div($icon-width, 2) );
+        // left: -(math.div($popup-width, 2) - math.div($icon-width, 2) );
+        left: -( ($popup-width / 2) - ($icon-width / 2) );
 
         text-align: center;
         font-size: 1.2rem;
