@@ -2,16 +2,10 @@
 @import "../../../../../scss/breakpoints.scss";
 
 :host:first-of-type > .menu-button {
-    // margin-top: 0;
-    // margin-right: 0;
-    // border-right: 0;
     border-top: 0;
 }
 
 :host:last-of-type > .menu-button {
-    // margin-top: 0;
-    // margin-right: 0;
-    // border-right: 0;
     border-bottom: 0;
 }
 
@@ -28,15 +22,11 @@
     border: $button-border-width solid white;
     border-right: $button-border-width * 2 solid white;
     border-left: 0;
-    // margin-top: $button-margin-size;
-    // margin-right: $button-margin-size;
-    // margin-bottom: $button-margin-size;
     margin-left: 3rem;
     transition: background-color 0.2s ease-in-out;
 
+    // use cannot use disabled buttons
     &--disabled {
-        // opacity: 0.8;
-
         .menu-button__text {
             opacity: 0.6;
         }
@@ -47,6 +37,7 @@
         }
     }
 
+    // currently selected button
     &--selected {
         border-right: 0;
         

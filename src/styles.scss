@@ -1,10 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~normalize.css';
+@import '~normalize.css/normalize.css';
 @import "./scss/fonts.scss";
 @import "./scss/colors.scss";
-@import "./scss/breakpoints.scss";
+@import "./scss/breakpoints.scss"; // variables that define @media breakpoints
 
+// datepicker plugin styles
 @import '~flatpickr/dist/flatpickr.css';
+
+
+// -----------PAGE STRUCTURE-----------
 
 * {
     box-sizing: border-box;
@@ -24,15 +28,16 @@ h2 {
     background-color: $primary-background-color--darker !important;
 }
 
+
+// ----------- Form-Page Forms -----------
+
 .form-page {
-    // Remove input[type"number"] arrows
-    /* Chrome, Safari, Edge, Opera */
+    // remove input[type"number"] arrows
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
         -webkit-appearance: none !important;
         margin: 0;
     }
-    /* Firefox */
     input[type="number"] {
         -moz-appearance: textfield !important;
     }
@@ -41,11 +46,14 @@ h2 {
         width: 100%;
     }
 
+    // default input layout
     input:not(input[type="checkbox"], input[type="radio"]), textarea, select {
         height: 4rem;
         height: 4rem;
         padding-top:  10px;
         padding-left: 20px;
+
+        // remove OS dependent styling
         appearance: none;
         border: none;
     }
@@ -62,16 +70,16 @@ h2 {
     }
 }
 
-// Snackbar
+
+// ----------- Material snackbar -----------
 
 .my-snackbar {
     display: flex !important;
     justify-content: center;
+    height: 50px;
+    min-width: 250px !important;
     border: 2px solid white;
-	min-width: 250px !important;
     font-size: 1.5rem;
-	height: 50px;
-	display: block;
 	text-align: center;
     color: white;
 }
@@ -81,6 +89,7 @@ h2 {
     background: tomato;
 }
 
+// center snackbar inside viewport
 .cdk-overlay-container {
     display: flex;
     justify-content: center;
@@ -94,6 +103,18 @@ h2 {
     pointer-events: none;
 
     z-index: 99999999;
+}
+
+
+// ----------- Media queries -----------
+
+// basic interface scaling
+// font-size could be higher if mobile layout for menu buttons was specified
+
+@media screen and (min-width: 2000px) {
+    html, body {
+        font-size: 13px;
+    }   
 }
 
 @media screen and (max-width: $form-one-column-breakpoint) {

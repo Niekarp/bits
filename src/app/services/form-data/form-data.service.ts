@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
+// relative paths must be used because of stackblitz
 import { AppFormData } from '../../models/app-form-data.model';
+
+// Service to store form data and sync it with localstorage
 
 @Injectable({
     providedIn: 'root'
 })
 export class FormDataService {
-    private readonly LOCAL_STORAGE_FORMS_KEY = "forms";
-    private readonly LOCAL_STORAGE_EDITED_FORM_KEY = "forms-edited-index";
+    private readonly LOCAL_STORAGE_FORMS_KEY = "forms";                     // key to form data
+    private readonly LOCAL_STORAGE_EDITED_FORM_KEY = "forms-edited-index";  // key to currently edited form
+
+    private readonly requiredFieldNames = ["marketingName", "condition", "type", "startDate"];
 
     public forms!: Array<AppFormData>; // initialized with initDataFromLocalStorage
     public editedFormIdx!: number;     // initialized with initDataFromLocalStorage
-
-    private requiredFieldNames = ["marketingName", "condition", "type", "startDate"];
 
     constructor() {
         if (localStorage.getItem(this.LOCAL_STORAGE_FORMS_KEY) === null ||
@@ -57,6 +60,7 @@ export class FormDataService {
     }
 
     public saveEditingStatus(): void {
+        // saves the index of currently edited form
         localStorage.setItem(this.LOCAL_STORAGE_EDITED_FORM_KEY, JSON.stringify(this.editedFormIdx));
     }
 

@@ -30,6 +30,7 @@
         }
     }
 
+    // giver rounded corners for grid edge elements
     .forms-container > *:nth-child(1) {
         border-radius: 8px 0 0 0px;
     }
@@ -49,6 +50,8 @@
         margin-top: 20px;
     }
 }
+
+// icons
 
 .icons8-edit { 
     display: inline-block;

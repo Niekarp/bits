@@ -18,22 +18,8 @@
         border-bottom: 2px solid white;
         margin-top: 0;
         margin-bottom: 1.5rem;
-        font-weight: lighter;
+        font-weight: normal;
         line-height: 0.1;
-    }
-
-    & > div {
-        padding: 0 4rem;
-        border-right: 2px;
-        border-color: white;
-        box-sizing: border-box;
-        border-right-style: solid;
-    }
-    & > div > section > form {
-        textarea {
-            resize: vertical;
-            height: 140px;
-        }
     }
 
     app-form-row:first-of-type {
@@ -45,31 +31,22 @@
         margin: 30px 0;
     }
 
-    .calendar-img {
-        position: absolute;
-        cursor: pointer;
-        width:  16px;
-        height: 16px;
-        right: 10px;
-        top: calc(50% - 8px);
-        pointer-events: none;
-
-        img {
-            max-width: 100%;
-        }
+    & > .column {
+        padding: 0 4rem;
+        border-right: 2px;
+        border-color: white;
+        box-sizing: border-box;
+        border-right-style: solid;
     }
 
-    .select-arrow {
-        position: absolute;
-        height: 13px;
-        width: 13px;
-        right: 10px;
-        top: calc(100% - 26.5px);
-        pointer-events: none;    
-    }
-
+    // first form
     .description-form {
         min-height: 380px;
+
+        textarea {
+            resize: vertical;
+            height: 140px;
+        }
 
         &__required-info {
             color: #96201C;
@@ -80,14 +57,18 @@
             vertical-align: sub;
             font-weight: bold;
         }
-
-        form {
-            // display: block;
-        }
-
     }
 
+    // second form
     .conditions-form {
+        input ~ label {
+            padding-left: 0.3rem;
+        }
+
+        select:invalid {
+            color: #818181;
+        }
+
         .number-margins {
             margin-bottom: -10px;
         }
@@ -96,12 +77,29 @@
             margin: 20px 0;
         }
 
-        input ~ label {
-            padding-left: 0.3rem;
+        .calendar-img {
+            position: absolute;
+            cursor: pointer;
+            width:  1.6rem;
+            height: 1.6rem;
+            right: 10px;
+            top: calc(50% - 0.8rem);
+            pointer-events: none;
+    
+            img {
+                max-width: 100%;
+            }
         }
-
-        select:invalid {
-            color: #818181;
+    
+        .select-arrow {
+            position: absolute;
+            height: 1.3rem;
+            width: 1.3rem;
+            right: 10px;
+            top: calc(100% - 2.65rem);
+            pointer-events: none;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAAA9ElEQVRIie3T20rDQBSF4e8JKkhpa7WeUBTFB/Mt9U4Qb7TaekJFxcNLxJuJDmHSkw2CZMG+yV5r/ROSoVatv1QDh2jOoasZuhrFxQJOkGGA7i8gbVyErjMsxsvjsMhnOCOsG7Jx11FsuCwsM9yiNwWkFzLFnv4kpkdsTgBZxV1JfqNoXimBPWFrBGQN94ncA9bLQh1cJUJv2Ev4t/Gc8N+Eg49UR/qbvWM/8u3gpQSyPA6Sq10C+8ABdvGa2F9PA8mV+lUzfIYpPp/1Sny/WT9ROldIrpafm14ZZBxsiKV5QWLYeQQZVAGJYadhWlVBav1zfQHKJIAi7N8iJQAAAABJRU5ErkJggg==");
+            background-size: 1.3rem;
         }
     }
 }

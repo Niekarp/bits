@@ -1,6 +1,8 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+// Menu button to navigate between form steps
+
 @Component({
     selector: 'app-menu-button',
     templateUrl: './menu-button.component.html',
@@ -20,7 +22,7 @@ export class MenuButtonComponent implements OnInit {
     public text: string = "";
 
     @Output()
-    public notFilled = new EventEmitter();
+    public notFilled = new EventEmitter(); // informs form-page that user tried navigation before filling mandatory fields
 
     stopClickPropagationIfDisabled($event: Event): void {
         if (this.disabled) {

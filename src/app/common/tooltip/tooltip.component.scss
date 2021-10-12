@@ -2,8 +2,8 @@
 @import "../../../scss/colors.scss";
 
 .tooltip {
-    position: relative;
     display: flex;
+    position: relative;
 
     &__icon {
         path {
@@ -11,6 +11,7 @@
         }
     }
 
+    // popup shows when user hovers over tooltip
     .popup {
         $popup-width: 150px;
         $icon-width: 16px;
@@ -26,22 +27,11 @@
         
         position: absolute;
         top: 2rem;
+        // stackblitz does not allow to use math.div
         // left: -(math.div($popup-width, 2) - math.div($icon-width, 2) );
         left: -( ($popup-width / 2) - ($icon-width / 2) );
 
         text-align: center;
         font-size: 1.2rem;
-
-        &__arrow {
-            position: absolute;
-            width: 1.3rem;
-            height: 1.3rem;
-            // border-left: 1px solid black;
-            // border-top: 1px solid black;
-            // transform: rotate(45deg);
-            // border-width: 0.1rem;
-            top: -1.5rem;
-            left: 6.7rem;
-        }
     }
 }

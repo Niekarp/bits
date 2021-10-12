@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+// Wrapper for form fields
+
 @Component({
     selector: 'app-form-field',
     templateUrl: './form-field.component.html',
@@ -7,10 +9,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FormFieldComponent implements OnInit {
     @Input()
-    public required: boolean = false;
+    public required: boolean = false; // adds '*'
 
     @Input()
-    public invalid: boolean = false;
+    public invalid: boolean = false;  // adds red outline
     
     constructor() { }
     

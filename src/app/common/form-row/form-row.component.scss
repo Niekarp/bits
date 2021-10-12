@@ -4,11 +4,11 @@
 
     &__tooltip {
         position: absolute;
-        top: calc(50% - 8px);
-        right: -2rem;
+        top: calc(50% - 0.8rem);
+        right: -20px;
 
         &--up {
-            top: 12px;
+            top: 1.2rem;
         }
     }
 }

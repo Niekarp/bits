@@ -16,7 +16,6 @@ import { SummaryStepComponent } from './pages/form-page/local-components/steps/s
 import { TooltipComponent } from './common/tooltip/tooltip.component';
 import { FormRowComponent } from './common/form-row/form-row.component';
 import { FormFieldComponent } from './common/form-field/form-field.component';
-import { SaveDraftOnChangeDirective } from './directives/save-draft-on-change/save-draft-on-change.directive';
 import { FormDisplayPipe } from './pipes/form-display.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -32,7 +31,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TooltipComponent,
     FormRowComponent,
     FormFieldComponent,
-    SaveDraftOnChangeDirective,
     FormDisplayPipe
   ],
   imports: [

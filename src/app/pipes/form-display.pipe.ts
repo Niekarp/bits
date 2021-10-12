@@ -1,6 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { AppFormData } from '../models/app-form-data.model';
 
+// Prepares AppFormData to be displayed
+// - empty fields becomes "<empty>"
+// - date fields becomes short date drings
+
 @Pipe({
     name: 'formDisplay'
 })
