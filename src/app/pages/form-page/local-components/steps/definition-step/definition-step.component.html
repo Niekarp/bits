@@ -4,7 +4,7 @@
             <h2><span>Description</span><span class="description-form__required-info"><span class="description-form__asterisk"> * </span> is required</span></h2>
             <form>
                 <app-form-row>
-                    <app-form-field [required]="true" [invalid]="!!(marketingName.touched && marketingName.invalid)">
+                    <app-form-field [required]="true" [invalid]="badInput(marketingName) || badAfterSave(marketingName)">
                         <input type="text" #marketingName="ngModel" name="marketingName" placeholder="Marketing name" [ngModel]="editedFormData.marketingName" (ngModelChange)="updateAndSaveForm($event, 'marketingName')" required>
                     </app-form-field>
                 </app-form-row>
