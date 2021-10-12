@@ -15,7 +15,7 @@
                     </app-form-field>
                 </app-form-row>
 
-                <app-form-row [tooltipUp]>
+                <app-form-row [tooltipUp]="true">
                     <app-form-field>
                         <textarea name="description" placeholder="Description" [ngModel]="editedFormData.description" (ngModelChange)="updateAndSaveForm($event, 'description')"></textarea>
                     </app-form-field>

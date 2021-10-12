@@ -10,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FormRowComponent implements OnInit {
     @Input()
-    public tooltipUp: boolean | undefined = true;  // positions tooltip to te top of input
+    public tooltipUp: boolean | undefined = false;  // positions tooltip to te top of input
 
     public isHovered: boolean = false;
     
