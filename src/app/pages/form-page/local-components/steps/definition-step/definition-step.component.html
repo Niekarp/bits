@@ -65,14 +65,14 @@
 
                 <app-form-row class="shorter-margins">
                     <app-form-field [required]="true" [invalid]="badInput(calendarInput1) || badAfterSave(calendarInput1)" (click)="calendarInput1.control.markAsTouched()">
-                        <input #calendarInput1="ngModel" type="text" name="startDate" placeholder="Start date" mwlFlatpickr [ngModel]="editedFormData.startDate" (ngModelChange)="updateAndSaveForm($event, 'startDate')" [altInput]="true" [convertModelValue]="true">
+                        <input #calendarInput1="ngModel" type="text" name="startDate" placeholder="Start date" mwlFlatpickr [maxDate]="calendarInput2.value" [ngModel]="editedFormData.startDate" (ngModelChange)="updateAndSaveForm($event, 'startDate')" [altInput]="true" [convertModelValue]="true">
                         <a class="calendar-img"><img src="./assets/calendar.png"></a>
                     </app-form-field>
 
                     <app-form-field style="flex: 0 0 15%;"></app-form-field>
 
                     <app-form-field>
-                        <input #calendarInput2 type="text" name="finishDate" placeholder="Finish date" mwlFlatpickr [(ngModel)]="editedFormData.finishDate" [altInput]="true" [convertModelValue]="true" [ngModel]="editedFormData.finishDate" (ngModelChange)="updateAndSaveForm($event, 'finishDate')">
+                        <input #calendarInput2 type="text" name="finishDate" placeholder="Finish date" mwlFlatpickr [minDate]="calendarInput1.value" [(ngModel)]="editedFormData.finishDate" [altInput]="true" [convertModelValue]="true" [ngModel]="editedFormData.finishDate" (ngModelChange)="updateAndSaveForm($event, 'finishDate')">
                         <a class="calendar-img"><img src="./assets/calendar.png"></a>
                     </app-form-field>
                 </app-form-row>
