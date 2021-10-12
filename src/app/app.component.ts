@@ -7,6 +7,7 @@ import { FormDataService } from './services/form-data/form-data.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+    // Hello :)
     constructor(public formData: FormDataService) {
     }
 }
