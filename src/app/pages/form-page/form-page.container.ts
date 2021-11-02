@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AppFormData } from '../../models/app-form-data.model';
 import { FormDataService } from '../../services/form-data/form-data.service';
-import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 import * as _ from "lodash";
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AppFormData } from 'src/app/models/app-form-data.model';
+import { AppFormData } from '../../models/app-form-data.model';
 
 @Component({
     selector: 'app-dashboard-page-ui',

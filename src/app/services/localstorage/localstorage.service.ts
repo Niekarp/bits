@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppFormData } from 'src/app/models/app-form-data.model';
+import { AppFormData } from '../../models/app-form-data.model';
 
 @Injectable({
     providedIn: 'root'

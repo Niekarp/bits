@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
-import { AppFormData, requiredAppFormDataFields } from "src/app/models/app-form-data.model";
+import { AppFormData, requiredAppFormDataFields } from "../../../../../models/app-form-data.model";
 
 // Service that takes logic away from definition-step.component and handles form
 
