@@ -8,6 +8,9 @@ import { FormDataService } from './services/form-data/form-data.service';
 })
 export class AppComponent {
     // Hello :)
-    constructor(public formData: FormDataService) {
+    get isFormEdited() {
+        return !!this.formData.getEditedForm();
     }
+    
+    constructor(private formData: FormDataService) {}
 }

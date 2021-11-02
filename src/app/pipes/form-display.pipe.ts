@@ -21,7 +21,7 @@ export class FormDisplayPipe implements PipeTransform {
         }
 
         for (let field in displayFormData) {
-            if (!displayFormData[field]) {
+            if (displayFormData[field] === null || displayFormData[field] === 0 || displayFormData[field] === '') {
                 displayFormData[field] = "<empty>";
             }
         }

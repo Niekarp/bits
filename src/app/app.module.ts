@@ -1,8 +1,9 @@
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,12 +19,16 @@ import { FormRowComponent } from './common/form-row/form-row.component';
 import { FormFieldComponent } from './common/form-field/form-field.component';
 import { FormDisplayPipe } from './pipes/form-display.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardPageContainerComponent } from './pages/dashboard-page/dashboard-page.container';
+import { FormPageContainerComponent } from './pages/form-page/form-page.container';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardPageComponent,
+    DashboardPageContainerComponent,
     FormPageComponent,
+    FormPageContainerComponent,
     DefinitionStepComponent,
     MockupStepComponent,
     MenuButtonComponent,
@@ -37,7 +42,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     FlatpickrModule.forRoot(),
+    Ng2FlatpickrModule,
     BrowserAnimationsModule,
     MatSnackBarModule
   ],

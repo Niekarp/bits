@@ -13,3 +13,10 @@ export class AppFormData {
         public backPromotion: boolean = false
     ) {}
 }
+
+export const requiredAppFormDataFields = [
+    "marketingName",
+    "condition",
+    "type",
+    "startDate"
+] as const;

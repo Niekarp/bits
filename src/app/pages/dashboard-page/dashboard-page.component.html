@@ -1,21 +1,17 @@
-<article class="dashboard-page">
+<section class="dashboard-page">
     <h1>Completed forms</h1>
     <div class="forms-container">
         <div>Nazwa promocji</div>
         <div>Edytuj</div>
         <div>Usun</div>
 
-        <ng-container *ngFor="let form of formData.forms; let i = index">
+        <ng-container *ngFor="let form of forms; let i = index">
             <div>{{ form.marketingName }}</div>
-            <div class="primary-background-hover" (click)="formData.startFormEditing(i)">
-                <span class="icons8-edit"></span>
-            </div>
-            <div class="primary-background-hover" (click)="formData.deleteForm(i)">
-                <span class="icons8-remove"></span>
-            </div>
+            <div class="primary-background-hover" (click)="onEditClick(i)"><span class="icons8-edit"></span></div>
+            <div class="primary-background-hover" (click)="onDeleteClick(i)"><span class="icons8-remove"></span></div>
         </ng-container>
     </div>
     <div class="button-container">
-        <button (click)="formData.addForm()">New form</button>
+        <button (click)="onAddClick()">New form</button>
     </div>
-</article>
+</section>

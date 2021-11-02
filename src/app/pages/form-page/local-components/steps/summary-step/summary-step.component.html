@@ -1,8 +1,8 @@
 <div class="summary">
-    <div *ngFor="let field of editedFormData | formDisplay | keyvalue" class="summary__row">
-        <div>{{ field.key + (formData.isFieldRequired(field.key) ? '*' : '') }}</div>
+    <div *ngFor="let field of editedForm | formDisplay | keyvalue" class="summary__row">
+        <div>{{ field.key }}</div>
         <div>{{ field.value }}</div>
-    </div>
+    </div>  
 
     <button type="submit" class="summary__button" (click)="onSaveButtonClick()">Zapisz</button>
 </div>

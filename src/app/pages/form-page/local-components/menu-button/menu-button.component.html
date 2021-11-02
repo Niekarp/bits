@@ -1,6 +1,5 @@
 <div class="menu-button primary-background-hover" 
-    [ngClass]="{'menu-button--disabled': disabled, 'menu-button--selected': selected}" 
-    (click)="displayToastIfDisabled(); stopClickPropagationIfDisabled($event);">
+    [ngClass]="{'menu-button--disabled': disabled, 'menu-button--selected': selected}">
 
     <div class="menu-button__number"><span>{{ number }}</span></div>
     <span class="menu-button__text">{{ text }}</span>

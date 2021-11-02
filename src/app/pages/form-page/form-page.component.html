@@ -1,19 +1,21 @@
-<article class="form-page">
-    <input type="hidden" value="1" #selectedStep>
-
+<div class="form-page">
     <aside class="form-page__menu">
-        <app-menu-button *ngFor="let n of [1, 2, 3, 4, 5, 6, 7, 8, 9]; let i = index"
-            (click)="selectedStep.value = n.toString();"
-            (notFilled)="onClickAndNotFilled()"
-            [number]="n"
-            [text]="buttonNames[i]"
-            [selected]="selectedStep.value === n.toString()"
-            [disabled]="n !== 1 && (!editedFormData.marketingName && !editedFormData.technicalName)">
+        <app-menu-button *ngFor="let n of stepNumbers; let i = index"
+            [number]="stepNumbers[i]"
+            [text]="stepLabels[i]"
+            [selected]="stepSelected[i]"
+            [disabled]="stepDisabled[i]"
+            (click)="onStepClick(n)">
         </app-menu-button>
     </aside>
-    <section class="form-page__step" [ngSwitch]="selectedStep.value">
-        <app-definition-step *ngSwitchCase="1" [saveFailed]="saveFailed"></app-definition-step>
-        <app-summary-step    *ngSwitchCase="9" (saveFail)="onSaveFail()"></app-summary-step>
+    <section class="form-page__step" [ngSwitch]="selectedStep">
+        <app-definition-step *ngSwitchCase="1" 
+            [editedForm]="editedForm" 
+            [formTouched]="definitionStepFormTouched"
+            (formChange)="onFormChange($event)"
+            (exit)="onDefinitionStepExit($event)">
+        </app-definition-step>
+        <app-summary-step    *ngSwitchCase="9" [editedForm]="editedForm" (save)="onSave()"></app-summary-step>
         <app-mockup-step     *ngSwitchDefault></app-mockup-step>
     </section>
-</article>
+</div>

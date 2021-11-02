@@ -1,26 +1,26 @@
-<div class="definition-step">
+<form [formGroup]="editedFormGroup" class="definition-step">
     <div class="column">
         <section class="description-form">
             <h2><span>Description</span><span class="description-form__required-info"><span class="description-form__asterisk"> * </span> is required</span></h2>
-            <form>
+            <div>
                 <app-form-row>
-                    <app-form-field [required]="true" [invalid]="badInput(marketingName) || badAfterSave(marketingName)">
-                        <input type="text" #marketingName="ngModel" name="marketingName" placeholder="Marketing name" [ngModel]="editedFormData.marketingName" (ngModelChange)="updateAndSaveForm($event, 'marketingName')" required>
+                    <app-form-field [required]="true" [invalid]="formControlInvalidity('marketingName')">
+                        <input type="text" formControlName="marketingName" placeholder="Marketing name">
                     </app-form-field>
                 </app-form-row>
 
                 <app-form-row>
                     <app-form-field>
-                        <input type="text" name="technicalName" placeholder="Technical name" [ngModel]="editedFormData.technicalName" (ngModelChange)="updateAndSaveForm($event, 'technicalName')">
+                        <input type="text" formControlName="technicalName" placeholder="Technical name">
                     </app-form-field>
                 </app-form-row>
 
                 <app-form-row [tooltipUp]="true">
                     <app-form-field>
-                        <textarea name="description" placeholder="Description" [ngModel]="editedFormData.description" (ngModelChange)="updateAndSaveForm($event, 'description')"></textarea>
+                        <textarea placeholder="Description" formControlName="description"></textarea>
                     </app-form-field>
                 </app-form-row>
-            </form>
+            </div>
         </section>
         <section>
             <h2><span>Catalog promotion tutorial:</span></h2>
@@ -32,10 +32,11 @@
     <div class="column">
         <section class="conditions-form">
             <h2><span>Conditions</span><span class="description-form__required-info"><span class="description-form__asterisk"> * </span> is required</span></h2>
-            <form>
+            <div>
                 <app-form-row>
-                    <app-form-field [required]="true" [invalid]="badInput(condition) || badAfterSave(condition)" (click)="condition.control.markAsTouched()">
-                        <select name="condition" #condition="ngModel" [ngModel]="editedFormData.condition" (ngModelChange)="updateAndSaveForm($event, 'condition')" required>
+                    <!-- (click)="condition.control.markAsTouched()" -->
+                    <app-form-field [required]="true" [invalid]="formControlInvalidity('condition')">
+                        <select formControlName="condition" required>
                             <option value="" disabled selected hidden>Condition</option>
                             <option value="Portal">Portal</option>
                             <option value="Lorem">Lorem</option>
@@ -46,8 +47,9 @@
                 </app-form-row>
                 
                 <app-form-row>
-                    <app-form-field [required]="true" [invalid]="badInput(typeField) || badAfterSave(typeField)"  (click)="typeField.control.markAsTouched()">
-                        <select name="typeField" #typeField="ngModel" [ngModel]="editedFormData.type" (ngModelChange)="updateAndSaveForm($event, 'type')" required>
+                    <!-- (click)="typeField.control.markAsTouched()" -->
+                    <app-form-field [required]="true" [invalid]="formControlInvalidity('type')">
+                        <select formControlName="type" required>
                             <option value="" disabled selected hidden>Type</option>
                             <option value="Amet">Amet</option>
                             <option value="Sit">Sit</option>
@@ -58,33 +60,33 @@
                 </app-form-row>
 
                 <app-form-row class="number-margins">
-                    <app-form-field [invalid]="!!(!benefitAmount.validity.valueMissing && !benefitAmount.validity.valid)">
-                        <input type="number" name="benefitAmount" #benefitAmount placeholder="Benefit amount" [ngModel]="editedFormData.benefitAmount" (ngModelChange)="updateAndSaveForm($event, 'benefitAmount')" required>
+                    <app-form-field [invalid]="false">
+                        <input type="number" formControlName="benefitAmount" placeholder="Benefit amount" required>
                     </app-form-field>
                 </app-form-row>
 
                 <app-form-row class="shorter-margins">
-                    <app-form-field [required]="true" [invalid]="badInput(calendarInput1) || badAfterSave(calendarInput1)" (click)="calendarInput1.control.markAsTouched()">
-                        <input #calendarInput1="ngModel" type="text" name="startDate" placeholder="Start date" mwlFlatpickr [maxDate]="calendarInput2.value" [ngModel]="editedFormData.startDate" (ngModelChange)="updateAndSaveForm($event, 'startDate')" [altInput]="true" [convertModelValue]="true">
+                    <app-form-field [required]="true" [invalid]="formControlInvalidity('startDate')">
+                        <input formControlName="startDate" #calendarInput1 type="text" placeholder="Start date" mwlFlatpickr [maxDate]="calendarInput2.value">
                         <a class="calendar-img"><img src="./assets/calendar.png"></a>
                     </app-form-field>
 
                     <app-form-field style="flex: 0 0 15%;"></app-form-field>
 
                     <app-form-field>
-                        <input #calendarInput2 type="text" name="finishDate" placeholder="Finish date" mwlFlatpickr [minDate]="calendarInput1.value" [(ngModel)]="editedFormData.finishDate" [altInput]="true" [convertModelValue]="true" [ngModel]="editedFormData.finishDate" (ngModelChange)="updateAndSaveForm($event, 'finishDate')">
+                        <input formControlName="finishDate" #calendarInput2 type="text" placeholder="Finish date" mwlFlatpickr [minDate]="calendarInput1.value">
                         <a class="calendar-img"><img src="./assets/calendar.png"></a>
                     </app-form-field>
                 </app-form-row>
 
                 <app-form-row>
                     <app-form-field>
-                        <input type="radio" name="businessConditions" [value]="0" [ngModel]="editedFormData.businessConditions" (ngModelChange)="updateAndSaveForm($event, 'businessConditions')">
+                        <input formControlName="businessConditions" type="radio" name="businessConditions" [value]="0">
                         <label>Business conditions</label>
                     </app-form-field>
 
                     <app-form-field>
-                        <input type="radio" name="businessConditions" [value]="1" [ngModel]="editedFormData.businessConditions" (ngModelChange)="updateAndSaveForm($event, 'businessConditions')">
+                        <input formControlName="businessConditions" type="radio" name="businessConditions" [value]="1">
                         <label>Best price 100%</label>
                     </app-form-field>
 
@@ -93,18 +95,18 @@
 
                 <app-form-row>
                     <app-form-field>
-                        <input type="checkbox" name="promotionConnection" [ngModel]="editedFormData.promotionConnection" (ngModelChange)="updateAndSaveForm($event, 'promotionConnection')">
+                        <input formControlName="promotionConnection" type="checkbox" name="promotionConnection">
                         <label>Connect with other promotions</label>
                     </app-form-field>
                 </app-form-row>
 
                 <app-form-row>
                     <app-form-field>
-                        <input type="checkbox" name="backPromotion" [ngModel]="editedFormData.backPromotion" (ngModelChange)="updateAndSaveForm($event, 'backPromotion')">
+                        <input formControlName="backPromotion" type="checkbox" name="backPromotion">
                         <label>Back promotions</label>
                     </app-form-field>
                 </app-form-row>
-            </form>
+            </div>
         </section>
     </div>
-</div>
+</form>

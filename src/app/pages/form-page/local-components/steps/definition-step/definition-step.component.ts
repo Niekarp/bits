@@ -1,46 +1,45 @@
-import { Component, Input, NgModule, ViewChild } from '@angular/core';
-import { FormControl, NgModel } from '@angular/forms';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Self } from '@angular/core';
 import { AppFormData } from '../../../../../models/app-form-data.model';
-import { FormDataService } from '../../../../../services/form-data/form-data.service';
+import { DefinitionStepPresenter } from './definition-step.presenter';
 
 // First step of the form
 
 @Component({
     selector: 'app-definition-step',
     templateUrl: './definition-step.component.html',
-    styleUrls: ['./definition-step.component.scss']
+    styleUrls: ['./definition-step.component.scss'],
+    viewProviders: [DefinitionStepPresenter],
 })
-export class DefinitionStepComponent {
+export class DefinitionStepComponent implements OnInit, OnDestroy {
     @Input()
-    public saveFailed: boolean = false; // highlight required fields when true
+    editedForm!: AppFormData;
 
-    @ViewChild("marketingName")
-    public $marketingName!: any;
+    @Input()
+    set formTouched(touched: boolean) {
+        if (touched) this.presenter.setFormTouched();
+    } 
 
-    public editedFormData: AppFormData; // currently edited form
+    @Output()
+    formChange = this.presenter.formChange$;
+
+    @Output()
+    exit = new EventEmitter<AppFormData>();
+
+    get editedFormGroup() {
+        return this.presenter.form;
+    }
     
-    constructor(public formData: FormDataService) {
-        this.editedFormData = formData.forms[formData.editedFormIdx];
+    constructor(@Self() private presenter: DefinitionStepPresenter) {}
+
+    ngOnInit() {
+        this.presenter.setForm(this.editedForm);
     }
 
-    public updateAndSaveForm(newValue: string, fieldName: string) {
-        // i tried to use banana in the box syntax [()] + custom directive to save form but
-        // the directive had been receiving old value to save
-        (this.editedFormData as any)[fieldName] = newValue;
-
-        this.formData.saveDraft();
+    ngOnDestroy() {
+        this.exit.emit(this.presenter.getForm());
     }
 
-    public touchRequiredSteps(): void {
-        // highlights marketing field when user tries to navigate to the next step before filling it
-        this.$marketingName.control.markAsTouched();
-    }
-
-    public badInput(field: NgModel): boolean {
-        return !!(field.touched && !field.value);
-    }
-
-    public badAfterSave(field: NgModel): boolean {
-        return !!(!field.value && !field.touched && this.saveFailed);
+    formControlInvalidity(controlName: string): boolean {
+        return this.presenter.getControlInvalidity(controlName);
     }
 }

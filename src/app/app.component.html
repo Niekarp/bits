@@ -1,8 +1,6 @@
-<main>
-    <ng-template [ngIf]="formData.editedFormIdx >= 0" [ngIfElse]="dashboard">
-        <app-form-page></app-form-page>
-    </ng-template>
-    <ng-template #dashboard>
-        <app-dashboard-page></app-dashboard-page>
-    </ng-template>
-</main>
+<ng-template [ngIf]="isFormEdited" [ngIfElse]="dashboard">
+    <app-form-page></app-form-page>
+</ng-template>
+<ng-template #dashboard>
+    <app-dashboard-page></app-dashboard-page>
+</ng-template>

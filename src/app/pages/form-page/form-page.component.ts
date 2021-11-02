@@ -1,49 +1,60 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AppFormData } from '../../models/app-form-data.model';
-import { FormDataService } from '../../services/form-data/form-data.service';
-import { DefinitionStepComponent } from './local-components/steps/definition-step/definition-step.component';
 
 @Component({
-    selector: 'app-form-page',
+    selector: 'app-form-page-ui',
     templateUrl: './form-page.component.html',
     styleUrls: ['./form-page.component.scss']
 })
-export class FormPageComponent { 
-    @ViewChild("selectedStep")
-    public $selectedStep!: ElementRef; // step refers to one of form pages accessed via menu buttons (1-9)
+export class FormPageComponent {
+    @Input()
+    editedForm!: AppFormData;
 
-    @ViewChild(DefinitionStepComponent)
-    public difinitionStepCmp!: DefinitionStepComponent; // frist step
+    @Input()
+    stepLabels!: string[];
 
-    public saveFailed: boolean = false; // some required fields were not filled
+    @Input()
+    stepNumbers!: number[];
 
-    public editedFormData: AppFormData;   // currently edited form
-    public buttonNames: Array<string> = [ // text for menu buttons
-        "definition",
-        "choose products",
-        "exclude products",
-        "bonus products",
-        "products limits",
-        "choose clients",
-        "exclude clients",
-        "clients limits",
-        "summary"
-    ];
+    @Input()
+    stepSelected!: boolean[];
 
-    constructor(public formData: FormDataService) {
-        this.editedFormData = formData.forms[formData.editedFormIdx]; // get form selected in dashboard-page
+    @Input()
+    stepDisabled!: boolean[];
+
+    @Input()
+    selectedStep!: number;
+
+    @Input()
+    definitionStepFormTouched!: boolean;
+
+    @Output()
+    stepClick = new EventEmitter<number>();
+
+    @Output()
+    formChange = new EventEmitter<AppFormData>();
+
+    @Output()
+    save = new EventEmitter();
+
+    @Output()
+    definitionStepExit = new EventEmitter<AppFormData>();
+
+    constructor() {}
+
+    onStepClick(stepNumber: number) {
+        this.stepClick.emit(stepNumber);
     }
 
-    public onClickAndNotFilled(): void {
-        // fires when menu button is clicked despite marketing name being empty
-        if (this.difinitionStepCmp) {
-            this.difinitionStepCmp.touchRequiredSteps();
-        }
+    onSave() {
+        this.save.emit();
     }
 
-    public onSaveFail() {
-        // go back to first step and signal save failure
-        (this.$selectedStep.nativeElement as HTMLInputElement).value = "1";
-        this.saveFailed = true;
+    onFormChange(form: AppFormData) {
+        this.formChange.emit(form);
+    }
+
+    onDefinitionStepExit(form: AppFormData) {
+        this.definitionStepExit.emit(form);
     }
 }

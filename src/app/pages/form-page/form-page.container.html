@@ -1,0 +1,11 @@
+<app-form-page-ui
+    [editedForm]="editedForm"
+    [stepLabels]="stepLabels"
+    [stepNumbers]="stepNumbers"
+    [stepSelected]="stepSelected"
+    [stepDisabled]="stepDisabled"
+    [selectedStep]="selectedStep"
+    [definitionStepFormTouched]="false"
+    (stepClick)="onStepClick($event)"
+    (definitionStepExit)="onDefinitionStepExit($event)">
+</app-form-page-ui>
